@@ -16,7 +16,7 @@ function setup() {
   isGameOver = false;
   score = 0;
   
-  createCanvas(400, 300);
+  createCanvas(1200, 550);
   background(150, 200, 250);
 
   groundSprites = new Group();
@@ -32,9 +32,6 @@ GROUND_SPRITE_WIDTH, GROUND_SPRITE_HEIGHT);
   player = createSprite(100, height - 75, 50, 50);
   obstacleSprites = new Group();
 }
-
-
-bacground(150, 200, 250)
 
 function draw() {
   if (isGameOver) {
@@ -65,24 +62,21 @@ function draw() {
         groundSprites.add(firstGroundSprite)
       }
   if (random() > 0.95) {
-  var obstacle = createSprite(camera.positon.x + width, height - 50 - 15, 30, 30)
-    obstacleSprites.add(obstacle)
+    var obstacle = createSprite(camera.position.x + width, random(0,(height- 50)-15), 30, 30);
+    obstacleSprites.add(obstacle);
   }
-  drawSprites()
-}
-if (
-  obstacleSprites.length > 0 &&
-  firstObsracle.position.x <=
-  camera.position.x - (width / 2 + firstGroundSprite.width / 2)
-) {
-  removeSprite(firstObstacle)
+var firstObstacle = obstacleSprites[0];
+if (obstacleSprites.length > 0 &&
+  firstObstacle.position.x <=
+  camera.position.x - (width / 2 + firstGroundSprite.width/2)) {
+  removeSprite(firstObstacle);
   
 }
   obstacleSprites.overlap(player, endGame);
   drawSprites();
   score = score + 1;
   textAlign(CENTER);
-  Text(score, camera.posotion.x, 10);
+  text(score, camera.position.x, 10);
 }
 }
 function endGame () {
